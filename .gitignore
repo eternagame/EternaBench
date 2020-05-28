@@ -1,3 +1,4 @@
 /excel_files/*
 */_private/*
 */__pycache__/*
+*/.ipynb_checkpoints/*

@@ -160,35 +160,50 @@ def bootstrap_inds(len_item):
 def write_unpaired_p(row, package='vienna_2', **kwargs):
     return 1 - np.sum(bpps(row['sequence'], package=package, **kwargs), axis=0)
 
-def get_correlations(cdf, split_by_nucleotides=False, n_bootstraps=10):
+def get_correlations(cdf, split_by_nucleotides=False, package_list=None, n_bootstraps=10):
     '''Input: concatenated dataframe.'''
     
     corr_df=pd.DataFrame()
+
+    if package_list is None:
+        package_list=[k.replace('p_','') for k in cdf.keys() if k.startswith('p_')]
+
+    pval_dict = {k:0 for k in package_list}
     
-    if split_by_nucleotides:
+    if split_by_nucleotides: # NOT UPDATED for p-values
         for nuc in cdf['nucleotide'].unique():
             nuc_df = cdf.loc[cdf['nucleotide']==nuc]
             cat_reac = nuc_df['reactivity'].values
-            for k in cdf.keys():
-                if k.startswith('p_'):
-                    cat_p = nuc_df[k].values
-                    for _ in range(n_bootstraps):
-                        bs_inds = bootstrap_inds(len(cat_reac))
-                        C = np.corrcoef(cat_reac[bs_inds], cat_p[bs_inds])[0][1]
-                        corr_df = corr_df.append({'Corr': C, 'nucl': nuc, 'package': k.replace('p_','')}, ignore_index=True)
+            for bs_ind in range(n_bootstraps):
+                bs_inds = bootstrap_inds(len(cat_reac))
+                current_list=[]
+                for k in package_list:
+                    cat_p = nuc_df['p_%s' % k].values
+                    C = np.corrcoef(cat_reac[bs_inds], cat_p[bs_inds])[0][1]
+                    current_list.append(C)
+                    corr_df = corr_df.append({'Corr': C, 'nucl': nuc, 'package': k,'bs_ind': bs_ind}, ignore_index=True)
+                winner = package_list[np.argmax(current_list)]
+                pval_dict[winner] +=1
         
     else:
         cat_reac = cdf['reactivity'].values
-        for k in cdf.keys():
-            if k.startswith('p_'):
-                cat_p = cdf[k].values
-                for _ in range(n_bootstraps):
-                    bs_inds = bootstrap_inds(len(cat_reac))
-                    C = np.corrcoef(cat_reac[bs_inds], cat_p[bs_inds])[0][1]
-                    corr_df = corr_df.append({'Corr': C, 'package': k.replace('p_','')}, ignore_index=True)
+        for bs_ind in range(n_bootstraps):
+            current_list=[]
 
+            for k in package_list:
+                bs_inds = bootstrap_inds(len(cat_reac))
 
-    return corr_df
+                cat_p = cdf['p_%s' % k].values
+                C = np.corrcoef(cat_reac[bs_inds], cat_p[bs_inds])[0][1]
+                current_list.append(C)
+                corr_df = corr_df.append({'Corr': C, 'package': k,'bs_ind': bs_ind}, ignore_index=True)
+            winner = package_list[np.argmax(current_list)]
+            pval_dict[winner] +=1
+
+    for k in package_list:
+        pval_dict[k] /= n_bootstraps
+
+    return corr_df, pval_dict
     
 def filter_data(cdf, upper=95):
     '''Filter concatenated dataframe to remove reactivity values below zero and above percentile cutoff.'''

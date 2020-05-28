@@ -44,7 +44,7 @@ To write with subset of packages for all data:
 
 ## To perform correlation analysis
 
-Analysis may be repeated using the jupyter notebooks in `ChemMapping/notebooks`.
+Analyses are described in jupyter notebook format in the `analysis` directory.
 
 # Riboswitch
 
@@ -93,7 +93,7 @@ Note: input dataframe must already have sequence constraint strings for input, o
 
 ## To perform correlation and RMSE analysis
 
-Analysis may be repeated using the jupyter notebooks in `Riboswitch/notebooks`.
+Analyses are described in jupyter notebook format in the `analysis` directory.
 
 # ExternalDatasets
 
@@ -105,8 +105,8 @@ This follows the same outline as the ChemMapping processing described above. Bri
 python scripts/write_estimates_in_arnie.py data/full_df_window600.json
 ```
 
-Analysis may be found in `ExternalChemMapping/notebooks/analyze_external.ipynb`.
+Analysis may be found in `analysis/external_chem_mapping.ipynb`.
 
 ## PUM-binding data from Jarmoskaite (2019)
 
-Writing estimates and analysis may be found in `ExternalDatasets/notebooks/PUM.ipynb`.
+Writing estimates and analysis may be found in `analysis/PUM.ipynb`.
