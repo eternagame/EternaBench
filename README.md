@@ -1,6 +1,6 @@
 # Organization:
 
-This repository contains the EternaBench datasets as well as scripts to reproduce the analysis presented in Wayment-Steele & Das (2020).
+This repository contains the EternaBench datasets as well as scripts to reproduce the analysis presented in Wayment-Steele, Kladwang, Eterna Players, & Das (2020).
 
 # Data Origin
 
