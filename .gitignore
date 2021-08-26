@@ -1,0 +1,9 @@
+/excel_files/*
+_private
+OLD/*
+*/_private/*
+*/__pycache__/*
+*/.ipynb_checkpoints
+.ipynb_checkpoints
+.DS_Store
+scoring_data/CM_pearson_project.json.zip

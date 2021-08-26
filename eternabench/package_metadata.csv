@@ -1,0 +1,49 @@
+﻿package,title,category
+vienna_1,Vienna 1,1
+vienna_2,Vienna 2,1
+vienna_2_nodangles,"Vienna 2, no dangles",1
+vienna_langdon_pars,"Vienna 2, `Langdon 2018` params",1
+vienna_rnasoft_pars,"Vienna 2, `RNASoft 2007` params",1
+vienna_2_60C,"Vienna 2, 60˚C",1
+nupack_95,NUPACK 1995,2
+nupack_95_nodangles,"NUPACK 1995, no dangles",2
+nupack_99,NUPACK 1999,2
+nupack_99_nodangles,"NUPACK 1999, no dangles",2
+nupack_99_60C,"NUPACK 1999, 60˚C",2
+rnastructure,RNAstructure,3
+rnastructure_nocoax,"RNAstructure, no coaxial stacking",3
+rnastructure_60C,"RNAstructure, 60˚C",3
+contrafold_1,CONTRAfold 1,4
+contrafold_2,CONTRAfold 2,4
+contrafold_2_nc,"CONTRAfold 2, noncomplementary",4
+rnasoft_99,RNAsoft 1999,5
+rnasoft_99_nodangles,"RNAsoft 1999, no dangles",5
+rnasoft_07,RNAsoft 2007,5
+rnasoft_blstar,RNAsoft BLstar,5
+rnasoft_bl_nodangles,"RNAsoft BL, no dangles",5
+rnasoft_lam-cg,RNAsoft LAM-CG,5
+rnasoft_nom-cg,RNAsoft NOM-CG,5
+eternafold_A,Model SRR,6
+eternafold_B,Model SCRR ('EternaFold'),6
+eternafold_C,Model S,6
+eternafold_D,Model SR,6
+eternafold_E,Model SC,6
+eternafold_F,Model C,6
+eternafold_G,Model R,6
+learntofold,LearnToFold,0
+cyclefold,CycleFold,0
+SPOTRNA,SPOTRNA,0
+mxfold,MXfold,0
+CROSS,CROSS,0
+LinearFold-V_100,LinearFold-V_100,1
+LinearFold-V_500,LinearFold-V_500,1
+LinearFold-V_1000,LinearFold-V_1000,1
+LinearFold-V_5000,LinearFold-V_5000,1
+LinearFold-C_100,LinearFold-C_100,4
+LinearFold-C_500,LinearFold-C_500,4
+LinearFold-C_1000,LinearFold-C_1000,4
+LinearFold-C_5000,LinearFold-C_5000,4
+LinearFold-E_100,LinearFold-E_100,6
+LinearFold-E_500,LinearFold-E_500,6
+LinearFold-E_1000,LinearFold-E_1000,6
+LinearFold-E_5000,LinearFold-E_5000,6
