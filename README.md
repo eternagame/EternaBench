@@ -66,13 +66,30 @@ python ../../scripts/GenerateRiboswitchDatasets.py
 
 # Organization 
 
-`data`: datasets
+`analysis`: python notebooks to reproduce paper figures.
 
-`scripts`: scripts to regenerate benchmark. Full documentation is in `docs/RunBenchmarkREADME.md`.
+`cluster_scripts`: scripts to run entire EternaBench benchmarking using SLURM cluster system.
 
-`analysis`: python notebooks to reproduce the figures in (Wayment-Steele, 2021).
+`data`: EternaBench datasets.
+
+- 	`EternaBench_*.json.zip`: Full and filtered EternaBench datasets without calculations
+-	`ChemMappingPreprocessing`: raw datasets used to create chem mapping benchmark.
+-	`RiboswitchPreprocessing`: raw datasets used to create riboswitch benchmark.
+-	`RiboswitchCalculations`: Example datasets with K_fold calculations.
+-	`ChemMappingCalculations`: Example datasets with p(unpaired) calculations.
+-	`ExternalData`: inputs and calculations for external collected datasets.
+
+`DEMO`: single script to regenerate observable calculations for one representative dataset from Chem Mapping and Riboswitch, and calculate significance.
+
+`docs`: Documentation.
 
 `eternabench`: EternaBench API source.
+
+`scoring_data`: CSVs containing all data and metrics used for evaluation in the paper. These data are the raw input to the figures plotted in the notebooks in `analysis`.
+
+`scripts`: scripts to calculate observables and bootstrap correlation significance over datasets. Full documentation is in `docs/RunBenchmarkREADME.md`.
+
+
 
 
 # Data Origin
