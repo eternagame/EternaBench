@@ -72,7 +72,7 @@ python ../../scripts/GenerateRiboswitchDatasets.py
 
 `data`: EternaBench datasets.
 
-- 	`EternaBench_*.json.zip`: Full and filtered EternaBench datasets without calculations
+- 	`EternaBench_*.json.zip`: Full and filtered EternaBench datasets without calculations.
 -	`ChemMappingPreprocessing`: raw datasets used to create chem mapping benchmark.
 -	`RiboswitchPreprocessing`: raw datasets used to create riboswitch benchmark.
 -	`RiboswitchCalculations`: Example datasets with K_fold calculations.
