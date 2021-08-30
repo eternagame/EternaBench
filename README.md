@@ -1,4 +1,4 @@
-# Organization:
+# EternaBench
 
 This repository contains the EternaBench datasets as well as scripts to reproduce the analysis presented in Wayment-Steele et al. (2021).
 
@@ -13,11 +13,15 @@ export ETERNABENCH_PATH=/path/to/EternaBench
 
 ## Use cases (from least to most resource-intensive)
 
+(NB) A clear use-case for this repository is to benchmark a novel algorithm against the algorithms contained here. This code uses [Arnie](https://github.com/DasLab/arnie/) to wrap the algorithms tested in this work.
+
+If you have an algorithm that you wish to demonstrate its superior performance on these datasets on, I recommend checking in a PR to Arnie to wrap it, this will make benchmarking it easier, and also make your algorithm immediately available for others to use with these data!
+
 ### I want to use pre-calculated correlation coefficient or z-score data from the paper, or regenerate figures in the preprint
 
 Notebooks in `analysis` regenerate all the figures in the manuscript. Each figure cell indicates a path to a csv that contains the correlation mean, standard deviation and z-score statistics for each dataset and each package.
 
-### I want to regenerate thermodynamic calculations for a representative chemical mapping and/or riboswitch dataset on a single core
+### I want to regenerate thermodynamic calculations and z-score calculations for a representative chemical mapping and/or riboswitch dataset on a single core
 
 1. Git clone [Arnie](https://github.com/DasLab/arnie/).
 
