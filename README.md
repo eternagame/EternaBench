@@ -15,7 +15,7 @@ export ETERNABENCH_PATH=/path/to/EternaBench
 
 (A plea.) A clear use-case for this repository is to benchmark a novel algorithm against the algorithms contained here. This code uses [Arnie](https://github.com/DasLab/arnie/) to wrap the algorithms tested in this work.
 
-If you have an algorithm for which you wish to demonstrate its superior performance on these datasets, we ask you might consider checking in a PR to Arnie to wrap it. This will not only make your benchmarking easier, it will also make your algorithm immediately available for others to use with these data and the Arnie ecosystem!
+If you have an algorithm for which you wish to demonstrate its superior performance on these datasets, we ask you might consider checking in a PR to Arnie to wrap it. This will not only make your benchmarking easier, it will also make your algorithm immediately available for other RNA thermodynamics aficionados to use with these data and the Arnie ecosystem!
 
 ### I want to use pre-calculated correlation coefficient or z-score data from the paper, or regenerate figures in the preprint
 
