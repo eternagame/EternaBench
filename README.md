@@ -2,6 +2,66 @@
 
 This repository contains the EternaBench datasets as well as scripts to reproduce the analysis presented in Wayment-Steele et al. (2021).
 
+
+## Setup
+
+Add to python path and point to datasets by adding to .bashrc:
+```bash
+export PYTHONPATH=/path/to/EternaBench
+export ETERNABENCH_PATH=/path/to/EternaBench
+```
+
+## Use cases (from least to most resource-intensive)
+
+### I want to use pre-calculated correlation coefficient or z-score data from the paper, or regenerate figures in the preprint
+
+Notebooks in `analysis` regenerate all the figures in the manuscript. Each figure cell indicates a path to a csv that contains the correlation mean, standard deviation and z-score statistics for each dataset and each package.
+
+### I want to regenerate thermodynamic calculations for a representative chemical mapping and/or riboswitch dataset on a single core
+
+1. Git clone [Arnie](https://github.com/DasLab/arnie/).
+
+2. Follow the Arnie instructions [here](https://github.com/DasLab/arnie/blob/master/docs/setup_doc.md) to set up all the packages you want to rerun.
+
+3. modify runDemo.sh to iterate over the packages you wish to run.
+
+4.
+
+```
+cd /path/to/eternabench
+chmod +x runDemo.sh
+./runEternaBench.sh
+```
+
+### I want to regenerate thermodynamic calculations for all the datasets on a cluster
+
+The slurm scripts used to generate the data for this paper are contained in `/cluster_scripts`.
+
+Once paths are set, the jobs can be started via
+```
+./runChemMapping.sh
+./runRiboswitch.sh
+./runExternal.sh
+```
+
+### I want to regenerate the filtered EternaBench datasets from the raw data
+
+1. Git clone [CD-HIT](https://github.com/weizhongli/cdhit) and export its path:
+
+```
+CDHIT_PATH='/path/to/cdhit'
+```
+
+2. Run the below python scripts.
+```
+cd /path/to/EternaBench/data/chemmapping_preprocessing
+python ../../scripts/GenerateChemMappingDatasets.py
+cd /path/to/EternaBench/data/riboswitch_preprocessing
+python ../../scripts/GenerateRiboswitchDatasets.py
+```
+
+# Organization 
+
 `data`: datasets
 
 `scripts`: scripts to regenerate benchmark. Full documentation is in `docs/RunBenchmarkREADME.md`.
@@ -10,20 +70,6 @@ This repository contains the EternaBench datasets as well as scripts to reproduc
 
 `eternabench`: EternaBench API source.
 
-# Quick Use
-
-Add to python path and point to datasets by adding to .bashrc:
-```bash
-export PYTHONPATH=/path/to/EternaBench
-export ETERNABENCH_PATH=/path/to/EternaBench
-```
-
-Load a dataset using
-
-```python
-import eternabench as eb
-data = eb.load_CM_data()
-```
 
 # Data Origin
 
