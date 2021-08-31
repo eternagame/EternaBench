@@ -13,9 +13,11 @@ export ETERNABENCH_PATH=/path/to/EternaBench
 
 ## Use cases (from least to most resource-intensive)
 
-(A plea.) A clear use-case for this repository is to benchmark a novel algorithm against the algorithms contained here. This code uses [Arnie](https://github.com/DasLab/arnie/) to wrap the algorithms tested in this work.
+(An ask.) A clear use-case for this repository is to benchmark a novel algorithm against the algorithms contained here. This code uses [Arnie](https://github.com/DasLab/arnie/) to wrap the algorithms tested in this work.
 
 If you have an algorithm for which you wish to demonstrate its superior performance on these datasets, we ask you might consider checking in a PR to Arnie to wrap it. This will not only make your benchmarking easier, it will also make your algorithm immediately available for other RNA thermodynamics aficionados to use with these data and the Arnie ecosystem!
+
+Instructions for linking base-pair probability calculations to Arnie are [here](). Basically, the algorithm only needs to provide a symmetric matrix of probabilities p(i:j) as a numpy array.
 
 ### I want to play with the data behind the figures in the paper, or use pre-calculated correlation coefficient or z-score data
 
