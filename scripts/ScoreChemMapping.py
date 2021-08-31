@@ -38,7 +38,6 @@ def ScoreChemMapping(data, x_data='reactivity', y_data='p', agg_field = 'filenam
 
 	# process data
 	for kind in data[agg_field].unique():
-		print(kind)
 
 		tmp_data = data.loc[data[agg_field]==kind]
 		tmp_data = tmp_data.loc[~tmp_data[x_data].isna()]
@@ -127,8 +126,7 @@ if __name__=='__main__':
 	df = df.dropna(subset=[args.field_to_aggregate])
 
 	print('read in', basename)
-	for x in df.keys():
-		print(x)
+
 	correlation_data = ScoreChemMapping(df, agg_field = args.field_to_aggregate, 
 		n_bootstraps=args.n_bootstraps, package_list=None, metric=args.metric,
 		x_data = args.reactivity_field, y_data='p')

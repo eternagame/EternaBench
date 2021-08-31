@@ -112,7 +112,7 @@ def get_polyA_indicator(row, polyA_len=3, DEBUG=False):
 
     return indicator
         
-def write_concatenated_dataframe(df):
+def write_concatenated_dataframe(df, reactivity_field='reactivity'):
     '''Input is dataframe with separate fields for each design, as well as possibly fields "p_<package_identifier>" 
     containing predicted p_unp vector for each design.
     Writes dataframe where all nucleotides are split up.
@@ -132,10 +132,10 @@ def write_concatenated_dataframe(df):
     # ... this is to get rid of reactivity values from constructs
     # where the length of the sequence is shorter than the reactivities recorded .. some of these in R75
 
-    df['reactivity'] = df.apply(lambda row: row['reactivity'][:len(row['sequence'])], axis=1)
+    df[reactivity_field] = df.apply(lambda row: row[reactivity_field][:len(row['sequence'])], axis=1)
 
 
-    concat_data = {'reactivity': np.concatenate([x for x in df['reactivity']]),
+    concat_data = {reactivity_field: np.concatenate([x for x in df[reactivity_field]]),
                    'in_polyA': np.concatenate([x for x in df['in_polyA']]),
                   'nucleotide': np.concatenate([x for x in df['trimmed_sequence']])}
     
@@ -144,7 +144,7 @@ def write_concatenated_dataframe(df):
         concat_data['errors'] = np.concatenate([x for x in df['errors']])
     
     #propagate construct-level information from before
-    keys = [x for x in df.keys() if x not in ['reactivity','sequence','trimmed_sequence','seqpos','errors', 'in_polyA']]
+    keys = [x for x in df.keys() if x not in [reactivity_field,'sequence','trimmed_sequence','seqpos','errors', 'in_polyA']]
     print('n_constructs',n_constructs)
 
     for key in keys:
@@ -159,8 +159,8 @@ def write_concatenated_dataframe(df):
     for pkg in package_list:
         concat_data[pkg] = np.concatenate([x for x in df[pkg]])
 
-    for k, v in concat_data.items():
-        print(k, len(v))
+    # for k, v in concat_data.items():
+    #     print(k, len(v))
 
     return pd.DataFrame(data=concat_data)
 

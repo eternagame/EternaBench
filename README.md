@@ -76,6 +76,8 @@ Takes about 12 minutes runtime to regenerate both. Example intermediate CDHIT ou
 
 `data`: EternaBench datasets.
 
+-	`DEMO_ChemMapping.json.zip`: Input data for "Cloud lab Round 1", example chemical mappingdataset discussed in main text.
+-	`DEMO_Riboswitch.json.zip`: Input data for "Ribologic FMN" dataset, example riboswitch dataset discussed in main text. 
 - 	`EternaBench_*.json.zip`: Full and filtered EternaBench datasets without calculations.
 -	`ChemMappingPreprocessing`: raw datasets used to create chem mapping benchmark.
 -	`RiboswitchPreprocessing`: raw datasets used to create riboswitch benchmark.

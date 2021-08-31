@@ -9,6 +9,9 @@ import eternabench.chemmapping_utils as utils
 from eternabench.package_utils import package_options, example_subset
 
 from datetime import date
+from tqdm import tqdm
+
+tqdm.pandas()
 
 todaysdate = date.today().strftime("%d%b%Y")
 
@@ -82,7 +85,7 @@ if __name__=='__main__':
 
         else:
             if 'full_p_%s' % pkg_option not in df.keys():
-                df['full_p_%s' % pkg_option] = df.apply(lambda row: write_unpaired_p(row, DEBUG=args.debug, **package_options[pkg_option]), axis=1)
+                df['full_p_%s' % pkg_option] = df.progress_apply(lambda row: write_unpaired_p(row, DEBUG=args.debug, **package_options[pkg_option]), axis=1)
             else:
                 print('Found %s' % pkg_option)
             df['p_%s' % pkg_option] = df.apply(lambda row: [row['full_p_%s' % pkg_option][x] for x in row['seqpos'] if x<len(row['sequence'])], axis=1)
@@ -92,17 +95,3 @@ if __name__=='__main__':
             df.to_json("%s_%s.json.zip" % (outfile, args.package))
         else:
             df.to_json("%s.json.zip" % (outfile))
-
-
-    # outdir='%s_Dataset_chunks_%s' % (outfile, todaysdate)
-
-    # print('Writing output, chunked by Dataset, to %s' % outdir)
-
-    # if not os.path.exists(outdir):
-    #     os.mkdir(outdir)
-
-    # for filename in df.Dataset.unique():
-    #     tmp = df.loc[df.Dataset==filename]
-    #     tmp.to_json('%s/%s.json.zip' % (outdir, filename.replace(' ','_')))
-
-

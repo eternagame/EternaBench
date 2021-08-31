@@ -41,7 +41,8 @@ package_options = {
 'eternafold_G_cfold': {'package': 'contrafold_2', 'param_file':'%s/params_G' % EFOLD_PARAMS_LOC},
 
 'eternafold_A': {'package': 'eternafold', 'param_file':'%s/params_A' % EFOLD_PARAMS_LOC},
-'eternafold_B': {'package': 'eternafold', 'param_file':'%s/params_B' % EFOLD_PARAMS_LOC},
+'eternafold': {'package': 'eternafold'},
+'eternafold_B': {'package': 'eternafold'},
 'eternafold_C': {'package': 'eternafold', 'param_file':'%s/params_C' % EFOLD_PARAMS_LOC},
 'eternafold_D': {'package': 'eternafold', 'param_file':'%s/params_D' % EFOLD_PARAMS_LOC},
 'eternafold_E': {'package': 'eternafold', 'param_file':'%s/params_E' % EFOLD_PARAMS_LOC},

@@ -66,7 +66,6 @@ if __name__=='__main__':
 	p.add_argument("-o", action="store", dest='outfile', help='name of output json file (default is <input_name>_BOOTSTRAPS.json.zip')
 
 	args = p.parse_args()
-	print(args)
 
 	basename = args.infile.split('/')[-1].split('.')[0]
 
@@ -90,8 +89,6 @@ if __name__=='__main__':
 	df = df.dropna(subset=[args.field_to_aggregate])
 
 	print('read in', basename)
-	for x in df.keys():
-		print(x)
 
 	if args.method=='bps':
 		x_inputs=['logkd_nolig_scaled']
