@@ -11,15 +11,9 @@ export PYTHONPATH=/path/to/EternaBench
 export ETERNABENCH_PATH=/path/to/EternaBench
 ```
 
-## Use cases (from least to most resource-intensive)
+## Use cases (from least to most intensive)
 
-(An ask.) A clear use-case for this repository is to benchmark a novel algorithm against the algorithms contained here. This code uses [Arnie](https://github.com/DasLab/arnie/) to wrap the algorithms tested in this work.
-
-If you have an algorithm for which you wish to demonstrate its superior performance on these datasets, we ask you might consider checking in a PR to Arnie to wrap it. This will not only make your benchmarking easier, it will also make your algorithm immediately available for other RNA thermodynamics aficionados to use with these data and the Arnie ecosystem!
-
-Instructions for linking base-pair probability calculations to Arnie are [here](https://github.com/eternagame/EternaBench/blob/master/docs/linkToArnie.md). Briefly, the algorithm just needs to provide a symmetric matrix of probabilities p(i:j) as a numpy array.
-
-### I want to play with the data behind the figures in the paper, or use pre-calculated correlation coefficient or z-score data
+### I want to play with the data behind the figures in the paper, or use pre-calculated correlation or z-score data
 
 Notebooks in `analysis` regenerate all the figures in the manuscript. Each figure cell indicates a path to a csv that contains the raw correlation and z-score data. Datasets for representative experiments and packages are also included.
 
@@ -41,9 +35,10 @@ chmod +x run_demo.sh
 
 ### I want to regenerate thermodynamic calculations for all the datasets on a cluster
 
-The slurm scripts used to generate the data for this paper are contained in `/cluster_scripts`.
+The Slurm scripts used to generate the data for this paper are contained in `/cluster_scripts`. You will need to modify the Slurm headers for your own environment.
 
 ```
+cd ${ETERNABENCH_PATH}/cluster_scripts
 ./SubmitParallelChemMapping.sh
 ./SubmitParallelRiboswitch.sh
 ./SubmitParallelExternalData.sh
@@ -51,7 +46,7 @@ The slurm scripts used to generate the data for this paper are contained in `/cl
 
 ### I want to regenerate the filtered EternaBench datasets from the raw data
 
-1. Git clone [RDatKit](https://github.com/ribokit/RDATKit.git) and follow instructions there to your python path.
+1. Git clone [RDatKit](https://github.com/ribokit/RDATKit.git) and follow instructions there to add it your python path.
 
 2. Git clone [CD-HIT](https://github.com/weizhongli/cdhit) and export its path:
 
@@ -64,6 +59,14 @@ CDHIT_PATH='/path/to/cdhit'
 python ${ETERNABENCH_PATH}/scripts/GenerateChemMappingDatasets.py
 python ${ETERNABENCH_PATH}/scripts/GenerateRiboswitchDatasets.py
 ```
+
+Takes about 12 minutes runtime to regenerate both. Example intermediate CDHIT outputs are provided in `cluster_scripts/CDHIT_example_output`.
+
+### I want to benchmark my novel algorithm against the algorithms contained here
+
+This code uses [Arnie](https://github.com/DasLab/arnie/) to wrap the algorithms tested in this work. If you have an algorithm for which you wish to demonstrate its superior performance on these datasets, we ask you might consider checking in a PR to Arnie to wrap it. This will not only make your benchmarking easier, it will also make your algorithm immediately available for other RNA thermodynamics aficionados to use with these data and the Arnie ecosystem!
+
+Instructions for linking base-pair probability calculations to Arnie are [here](https://github.com/eternagame/EternaBench/blob/master/docs/linkToArnie.md). Briefly, the algorithm just needs to provide a symmetric matrix of probabilities p(i:j) as a numpy array.
 
 # Organization 
 
