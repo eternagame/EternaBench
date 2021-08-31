@@ -32,36 +32,35 @@ Notebooks in `analysis` regenerate all the figures in the manuscript. Each figur
 4.
 
 ```
-cd /path/to/eternabench
-chmod +x runDemo.sh
-./runEternaBench.sh
+cd ${ETERNABENCH_PATH}/DEMO
+chmod +x run_demo.sh
+./run_demo.sh
 ```
 
 ### I want to regenerate thermodynamic calculations for all the datasets on a cluster
 
 The slurm scripts used to generate the data for this paper are contained in `/cluster_scripts`.
 
-Once paths are set, the jobs can be started via
 ```
-./runChemMapping.sh
-./runRiboswitch.sh
-./runExternal.sh
+./SubmitParallelChemMapping.sh
+./SubmitParallelRiboswitch.sh
+./SubmitParallelExternalData.sh
 ```
 
 ### I want to regenerate the filtered EternaBench datasets from the raw data
 
-1. Git clone [CD-HIT](https://github.com/weizhongli/cdhit) and export its path:
+1. Git clone [RDatKit](https://github.com/ribokit/RDATKit.git) and follow instructions there to your python path.
+
+2. Git clone [CD-HIT](https://github.com/weizhongli/cdhit) and export its path:
 
 ```
 CDHIT_PATH='/path/to/cdhit'
 ```
 
-2. Run the below python scripts.
+3. Run the below python scripts.
 ```
-cd /path/to/EternaBench/data/chemmapping_preprocessing
-python ../../scripts/GenerateChemMappingDatasets.py
-cd /path/to/EternaBench/data/riboswitch_preprocessing
-python ../../scripts/GenerateRiboswitchDatasets.py
+python ${ETERNABENCH_PATH}/scripts/GenerateChemMappingDatasets.py
+python ${ETERNABENCH_PATH}/scripts/GenerateRiboswitchDatasets.py
 ```
 
 # Organization 
@@ -72,7 +71,7 @@ python ../../scripts/GenerateRiboswitchDatasets.py
 
 `data`: EternaBench datasets.
 
-- 	`EternaBench_*.json.zip`: Full and filtered EternaBench datasets without calculations
+- 	`EternaBench_*.json.zip`: Full and filtered EternaBench datasets without calculations.
 -	`ChemMappingPreprocessing`: raw datasets used to create chem mapping benchmark.
 -	`RiboswitchPreprocessing`: raw datasets used to create riboswitch benchmark.
 -	`RiboswitchCalculations`: Example datasets with K_fold calculations.
