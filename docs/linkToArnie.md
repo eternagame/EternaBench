@@ -1,6 +1,6 @@
-To link a new package to Arnie, PR the following modifications to `bpps.py`:
+To link a new package to Arnie, make following modifications to `arnie/bpps.py`:
 
-Add to the `bpps` function:
+1. Add to the `bpps` function:
 
 ```
 
@@ -15,7 +15,7 @@ def bpps(sequence, ...., myNewArgument=myDefaultValue)
 
 ```
 
-And define a new function in `bpps.py`:
+2. Define a new function in `bpps.py`:
 
 ```
       
@@ -28,7 +28,7 @@ def bpps_myGreatPackage_(sequence, myNewArgument=True):
  ```
   
 
-In `eternabench/package_options.py`: add a keyword to the dictionary `package_options` is fed to arnie to control the keywords used for each package call.
+3. In `eternabench/package_options.py`: add a keyword to the dictionary `package_options` is fed to arnie to control the keywords used for each package call.
 
 ```
 
