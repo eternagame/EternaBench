@@ -11,11 +11,17 @@ export PYTHONPATH=/path/to/EternaBench
 export ETERNABENCH_PATH=/path/to/EternaBench
 ```
 
-## Use cases (roughly from least to most intensive)
+## Use cases
 
 ### I want to play with the data in the paper figures, or use pre-calculated correlation or z-score data
 
 Notebooks in `analysis` regenerate all the figures in the manuscript. Each figure cell indicates a path to a csv that contains the raw correlation and z-score data. Datasets for representative experiments and packages are also included.
+
+### I want to benchmark my novel algorithm against the algorithms contained here
+
+This code uses [Arnie](https://github.com/DasLab/arnie/) to wrap the algorithms tested in this work. If you have an algorithm for which you wish to demonstrate its superior performance on these datasets, we ask you consider checking in a PR to Arnie to wrap your algorithm. This will not only make your benchmarking easier, it will also make your algorithm immediately available for other Arnie-wielding RNA thermodynamics fans to use!
+
+Instructions for linking base-pair probability calculations to Arnie are [here](https://github.com/eternagame/EternaBench/blob/master/docs/linkToArnie.md). Briefly, the algorithm just needs to provide a symmetric matrix of probabilities p(i:j) as a numpy array.
 
 ### I want to regenerate thermodynamic calculations and z-score calculations for a representative chemical mapping and/or riboswitch dataset on a single core
 
@@ -61,12 +67,6 @@ python ${ETERNABENCH_PATH}/scripts/GenerateRiboswitchDatasets.py
 ```
 
 Takes about 12 minutes runtime to regenerate both. Example intermediate CDHIT outputs are provided in `cluster_scripts/CDHIT_example_output`.
-
-### I want to benchmark my novel algorithm against the algorithms contained here
-
-This code uses [Arnie](https://github.com/DasLab/arnie/) to wrap the algorithms tested in this work. If you have an algorithm for which you wish to demonstrate its superior performance on these datasets, we ask you might consider checking in a PR to Arnie to wrap it. This will not only make your benchmarking easier, it will also make your algorithm immediately available for other RNA thermodynamics aficionados to use with these data and the Arnie ecosystem!
-
-Instructions for linking base-pair probability calculations to Arnie are [here](https://github.com/eternagame/EternaBench/blob/master/docs/linkToArnie.md). Briefly, the algorithm just needs to provide a symmetric matrix of probabilities p(i:j) as a numpy array.
 
 # Organization 
 
