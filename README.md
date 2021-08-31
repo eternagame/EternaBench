@@ -27,21 +27,34 @@ This will make benchmarking easier and will also make your algorithm immediately
 
 Instructions for linking base-pair probability calculations to Arnie are [here](https://github.com/eternagame/EternaBench/blob/master/docs/linkToArnie.md). Briefly, the algorithm just needs to provide a symmetric matrix of probabilities p(i:j) as a numpy array.
 
-### I want to regenerate thermodynamic calculations and z-score calculations for a representative chemical mapping and/or riboswitch dataset on a single core
+### I want to regenerate thermodynamic calculations and z-score calculations for an example chemical mapping and riboswitch dataset on a single core
 
 1. Git clone [Arnie](https://github.com/DasLab/arnie/).
 
 2. Follow the Arnie instructions [here](https://github.com/DasLab/arnie/blob/master/docs/setup_doc.md) to set up all the packages you want to rerun.
 
-3. modify runDemo.sh to iterate over the packages you wish to run.
+3. modify package_list.txt to iterate over the packages you wish to run.
 
-4.
+4. Run the bash script: ./run_demo.sh
+
+5. Successful completion will end in a call to calculate bootstrapped Pearson correlation coefficients and z-scores.
 
 ```
-cd ${ETERNABENCH_PATH}/DEMO
-chmod +x run_demo.sh
-./run_demo.sh
+python ../calculateZscoreDEMO.py 
+Chem Mapping Rnd 1 scores
+        package  pearson_mean  pearson_std  pearson_zscore_by_Dataset_mean
+1    eternafold      0.738693     0.001563                        0.855730
+0  contrafold_2      0.718083     0.001729                        0.242594
+2      vienna_2      0.672972     0.002110                       -1.098324
+
+Riboswitch "Ribologic FMN" scores
+        package  pearson_mean  pearson_std  pearson_zscore_by_Dataset_mean
+1    eternafold      0.642524     0.013263                        1.004608
+0  contrafold_2      0.502365     0.017499                       -0.017645
+2      vienna_2      0.368747     0.020251                       -0.986963
 ```
+
+Example outputs are in `DEMO/example_outputs_from_demo`.
 
 ### I want to regenerate thermodynamic calculations for all the datasets on a cluster
 
