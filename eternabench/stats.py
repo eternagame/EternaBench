@@ -69,6 +69,7 @@ def calculate_Z_scores(df, package_list=None, dataset_list = None, metric='pears
 
     df[metric+'_std_across_packages'] = df.groupby([dataset_field,'bs_ind'])[metric].transform('std')
     df[metric+'_mean_across_packages'] = df.groupby([dataset_field,'bs_ind'])[metric].transform('mean')
+    df = df.loc[df[metric+'_std_across_packages']!=0]
 
     # zscore is calculated per dataset
     df[metric+'_zscore_by_%s' % dataset_field] = df.apply(lambda row: (row[metric] - row[metric+'_mean_across_packages'])/row[metric+'_std_across_packages'], axis=1)

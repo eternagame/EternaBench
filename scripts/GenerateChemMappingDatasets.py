@@ -42,11 +42,11 @@ def write_EternaScore(row):
 	except:
 		return row['EteRNA']
 
-if not os.path.exists('../data/preprocessing/raw_rdats/'):
-	raise RuntimeError("Could not find /EternaBench/data/preprocessing/raw_rdats/ . Navigate to that directory and unzip `raw_rdats.zip`")
+if not os.path.exists(os.environ['ETERNABENCH_PATH']+'/data/ChemMappingPreprocessing/raw_rdats/'):
+	raise RuntimeError("Could not find /EternaBench/data/ChemMappingPreprocessing/raw_rdats/ . Navigate to that directory and unzip `raw_rdats.zip`")
 
 for name, fil in rdat_files.items():
-	df = write_rdat_as_dataframe('../data/preprocessing/raw_rdats/%s' % fil, verbose=True)
+	df = write_rdat_as_dataframe(os.environ['ETERNABENCH_PATH']+'/data/ChemMappingPreprocessing/raw_rdats/%s' % fil, verbose=True)
 	# remove FMN data
 	df = filter_FMN_containing(df)
 
@@ -68,5 +68,5 @@ full_df['EternaScore'] = full_df.apply(lambda row: write_EternaScore(row), axis=
 full_df = full_df.drop(columns=['Part 2', 'EteRNA'])
 
 filtered_df = full_df.loc[full_df['passed_CDHIT_filter']==True]
-full_df.to_json('../data/EternaBench_ChemMapping_Full_%s.json.zip' % todaysdate)
-filtered_df.to_json('../data/EternaBench_ChemMapping_Filtered_%s.json.zip' % todaysdate)
+full_df.to_json(os.environ['ETERNABENCH_PATH']+'/data/EternaBench_ChemMapping_Full_%s.json.zip' % todaysdate)
+filtered_df.to_json(os.environ['ETERNABENCH_PATH']+'/data/EternaBench_ChemMapping_Filtered_%s.json.zip' % todaysdate)

@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import sys
 sys.path.append('/Users/hwayment/das/github/')
-CDLOC='/home/groups/rhiju/hannahw1/cdhit'
 
 from RDATKit import rdatkit
 
@@ -61,7 +60,7 @@ def filter_dataframe_with_cdhit(df, rdat_identifier):
             f.write("%s\n" % seq[:-1*len('AAAAGAAACAACAACAACAAC')]) # removing tail
     print('Running CD-HIT-EST on %s...' % rdat_identifier)
     
-    p = sp.Popen(('%s/cd-hit-est -i %s.fasta -o %s_cdhit_output -c 0.8' % (CDLOC, rdat_identifier,rdat_identifier)).split(' '),
+    p = sp.Popen(('%s/cd-hit-est -i %s.fasta -o %s_cdhit_output -c 0.8' % (os.environ['CDHIT_PATH'], rdat_identifier,rdat_identifier)).split(' '),
                  stdout=sp.PIPE, stderr=sp.PIPE)
     p.wait()
     clusters, local_clust=[],[]    

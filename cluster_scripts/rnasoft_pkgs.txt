@@ -1,0 +1,7 @@
+rnasoft_99
+rnasoft_07
+rnasoft_blstar
+rnasoft_99_nodangles
+rnasoft_bl_nodangles
+rnasoft_lam-cg
+rnasoft_nom-cg
