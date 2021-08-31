@@ -17,14 +17,14 @@ def load_CM_example_calculations():
 
 def load_CM_example_correlations():
 	print("Loading bootstrapped pearson correlations for EternaBench ChemMapping Round 1")
-	return pd.read_csv(data_path+'/scoring_data/EternaBench_ChemMapping_Example_Correlations_Round1.csv')
+	return pd.read_csv(data_path+'/data/EternaBench_ChemMapping_Example_Correlations_Round1.csv')
 
-def load_CM_scores():
-	print("Loading scores DONE_17Apr2021ScoreDF.json.zip")
-	df = pd.read_json(data_path+'/scoring_data/DONE_17Apr2021ScoreDF.json.zip')
-	print("Fields: %s" %', '.join(list(df.keys())))
-	return df
+# def load_CM_scores():
+# 	print("Loading scores DONE_17Apr2021ScoreDF.json.zip")
+# 	df = pd.read_json(data_path+'/scoring_data/DONE_17Apr2021ScoreDF.json.zip')
+# 	print("Fields: %s" %', '.join(list(df.keys())))
+# 	return df
 
-def load_CM_calculations():
-	print('Warning! This is a big file')
-	return pd.read_json(data_path+"/ChemMapping/data/DONE_17Apr2021.json.zip")
+# def load_CM_calculations():
+# 	print('Warning! This is a big file')
+# 	return pd.read_json(data_path+"/ChemMapping/data/DONE_17Apr2021.json.zip")

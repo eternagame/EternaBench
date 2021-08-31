@@ -1,0 +1,14 @@
+vienna_2
+vienna_2_60C
+nupack_99
+rnastructure
+rnastructure_60C
+contrafold_2
+rnasoft_blstar
+eternafold_A
+eternafold_B
+eternafold_C
+eternafold_D
+eternafold_E
+eternafold_F
+eternafold_G

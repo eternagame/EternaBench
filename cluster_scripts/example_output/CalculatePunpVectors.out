@@ -1,0 +1,22 @@
+#### ETERNABENCH: Calculate P(Unpaired) Vectors #####
+Last Update July 2021, H Wayment-Steele
+Running calculations using Arnie located at ['/home/users/hannahw1/arnie']
+Arnie paths:
+rnastructure: /home/groups/rhiju/hannahw1/secstruct_software/RNAstructure/exe
+rnasoft: /home/groups/rhiju/hannahw1/secstruct_software/MultiRNAFold
+contrafold_1: /home/groups/rhiju/hannahw1/secstruct_software/contrafold_v1_10/src
+contrafold_2: /home/groups/rhiju/hannahw1/secstruct_software/contrafold_v2_02/src
+eternafold: /home/groups/rhiju/hannahw1/secstruct_software/EternaFold/src
+linearpartition: /home/groups/rhiju/hannahw1/secstruct_software/LinearPartition/bin
+linearfold: /home/groups/rhiju/hannahw1/secstruct_software/LinearFold/bin
+vienna_2: /home/groups/rhiju/hannahw1/secstruct_software/ViennaRNA-2.4.10/src/bin
+vienna_1: /home/groups/rhiju/hannahw1/secstruct_software/ViennaRNA-1.8.5/bin
+nupack: /home/groups/rhiju/hannahw1/secstruct_software/nupack3.2.2/build/bin
+TMP: /tmp
+INFO: Pandarallel will run on 32 workers.
+INFO: Pandarallel will use Memory file system to transfer data between the main process and workers.
+writing p_unp for vienna_2
+writing p_unp for vienna_2_nodangles
+writing p_unp for vienna_2_60C
+writing p_unp for vienna_1
+writing p_unp for nupack_99

@@ -9,8 +9,6 @@ todaysdate = date.today().strftime("%d%b%Y")
 from pandarallel import pandarallel
 pandarallel.initialize()
 
-CDHIT_PATH = '/home/groups/rhiju/hannahw1'
-
 Round_dict={88: 1, 93:2, 95:3, 96:4, 97:5, 98:6, 101: 7, 107:8,'Ribologic':'Ribologic'}
 
 def get_lig_constraint(row):
@@ -59,7 +57,7 @@ tmp_df_list=[]
 for rnd in [88, 93,95,96,97,98]:
     print('#####', rnd)
     try:
-        tmp_df = pd.read_csv('R%d_fmn.txt' % rnd, delimiter='\t')[fields_w_cluster]
+        tmp_df = pd.read_csv(os.environ['ETERNABENCH_PATH']+'/data/RiboswitchPreprocessing/R%d_fmn.txt' % rnd, delimiter='\t')[fields_w_cluster]
         tmp_df = tmp_df.loc[tmp_df['NumberOfClusters']>50]
 
     except:
@@ -103,7 +101,7 @@ df = df.rename(columns={'Sequence':'sequence'})
 #####
 ### Add ribologic dataset
 
-rdf = pd.read_csv('ribologic_SI.txt',delimiter='\t')
+rdf = pd.read_csv(os.environ['ETERNABENCH_PATH']+'/data/RiboswitchPreprocessing/ribologic_SI.txt',delimiter='\t')
 
 rdf = rdf.drop(['secstruct_ligand','secstruct_noligand'],axis=1)
 rdf = rdf.loc[rdf["ligand"] != 'miRNA']
@@ -197,7 +195,7 @@ for rnd in df.Dataset.unique():
             f.write("%s\n" % seq)
     print('Running CD-HIT-EST', rnd,len(tmp))
 
-    p = sp.Popen(('%s/cdhit/cd-hit-est -i eterna_switches_%s.fasta -o eterna_cdhit_output_%s -c 0.8' % (CDHIT_PATH, rnd,rnd)).split(' '),
+    p = sp.Popen(('%s/cdhit/cd-hit-est -i eterna_switches_%s.fasta -o eterna_cdhit_output_%s -c 0.8' % (os.environ['CDHIT_PATH'], rnd,rnd)).split(' '),
                  stdout=sp.PIPE, stderr=sp.PIPE)
     clusters=[]
     local_clust=[]
@@ -227,5 +225,5 @@ print(new_df.groupby(['Dataset', 'passed_CDHIT_filter']).size())
 new_df['log_AR'] = np.log(new_df['Activation Ratio'])
 
 new_df = new_df.drop(columns=['Kd_OFF_predicted','Kd_ON_predicted','AR_predicted','level_0'])
-new_df.to_json('EternaBench_Riboswitch_Full_%s.json.zip' % todaysdate)
-new_df.loc[new_df.passed_CDHIT_filter].to_json('EternaBench_Riboswitch_Filtered_%s.json.zip' % todaysdate)
+new_df.to_json(os.environ['ETERNABENCH_PATH']+'/data/EternaBench_Riboswitch_Full_%s.json.zip' % todaysdate)
+new_df.loc[new_df.passed_CDHIT_filter].to_json(os.environ['ETERNABENCH_PATH']+'/data/EternaBench_Riboswitch_Filtered_%s.json.zip' % todaysdate)

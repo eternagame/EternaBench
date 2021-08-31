@@ -89,29 +89,30 @@ def single_barplot(df, cat, val, err, titles, **kwargs):
     plt.barh(x,df[val].values,  xerr=df[err].values, **kwargs)
     plt.ylim([-0.5,len(x)-0.5])
 
-def ranked_heatmap(zscores, ranking, metric='pearson_zscore_by_Dataset_mean', package_order=None,
+def ranked_heatmap(zscores, metric='pearson_zscore_by_Dataset_mean', package_order=None,
                    dataset_field='Dataset', 
                    dataset_order=None,
-                   figsize=(7,5), width_ratios=[2,1], cbar_loc=[-0.1,0.05], fig=None, axes=None,
+                   figsize=None, width_ratios=None, cbar_loc=[-0.1,0.05], fig=None, axes=None,
                    vmin=None,vmax=None, ext=False,dataset_labels=None):
     '''Plot heatmap of packages ranked over datasets, with best at top.'''
 
     if package_order is not None:
         zsc_copy=pd.DataFrame()
-        r_copy = pd.DataFrame()
         for pkg in package_order:
             zsc_copy= zsc_copy.append(zscores.loc[zscores.package==pkg],ignore_index=True)
-            r_copy= r_copy.append(ranking.loc[ranking.package==pkg],ignore_index=True)
-
         zscores = deepcopy(zsc_copy)
-        ranking = deepcopy(r_copy)
 
     if dataset_order is not None:
         zsc_copy=pd.DataFrame()
         for ds in dataset_order:
             zsc_copy= zsc_copy.append(zscores.loc[zscores[dataset_field]==ds],ignore_index=True)
-
         zscores = deepcopy(zsc_copy)
+
+    if figsize is None or width_ratios is None:
+        n=len(zscores.Dataset.unique())
+        k = len(zscores.package.unique())
+        figsize=(.2*n+2,.2*k-1)
+        width_ratios = [.2*n, 2]
 
     tmp, package_list, dataset_list = create_array(zscores, 'package', dataset_field, metric)
 
@@ -157,10 +158,10 @@ def ranked_heatmap(zscores, ranking, metric='pearson_zscore_by_Dataset_mean', pa
     cbaxes = fig.add_axes([*cbar_loc, 0.15, 0.03]) 
     fig.colorbar(im, cax = cbaxes,orientation='horizontal', label='Z-score')
 
-    ranking = ranking.merge(package_data, on='package')
+    #ranking = ranking.merge(package_data, on='package')
     zscores = zscores.merge(package_data, on='package')
 
-    ranking['category'] = [hue_order[i] for i in ranking['category']]
+    #ranking['category'] = [hue_order[i] for i in ranking['category']]
     zscores['category'] = [hue_order[i] for i in zscores['category']]
 
     sns.barplot(y='title', x=metric, hue='category', dodge=False, data=zscores,
@@ -173,7 +174,7 @@ def ranked_heatmap(zscores, ranking, metric='pearson_zscore_by_Dataset_mean', pa
     ax2.legend([],[], frameon=False)
 
 
-def ranked_heatmap_w_bar_overhead(zscores, ranking, metric='pearson_zscore_by_Dataset_mean', package_order=None,
+def ranked_heatmap_w_bar_overhead(zscores, metric='pearson_zscore_by_Dataset_mean', package_order=None,
                    dataset_field='Dataset', figsize=(7,5), width_ratios=[2,1], cbar_loc=[-0.1,0.05],
                    vmin=None,vmax=None, ext=False,barplot_ymax=0.75, barplot_ylabel='Mean Corr.',RMSE=False, rainbow=False):
     '''Plot heatmap of packages ranked over datasets, with best at top.'''
@@ -181,17 +182,17 @@ def ranked_heatmap_w_bar_overhead(zscores, ranking, metric='pearson_zscore_by_Da
     if RMSE:
         package_order = list(reversed(package_order))
         zscores[metric] *= -1
-        ranking[metric] *= -1
+        #ranking[metric] *= -1
         
     if package_order is not None:
         zsc_copy=pd.DataFrame()
         r_copy = pd.DataFrame()
         for pkg in package_order:
             zsc_copy= zsc_copy.append(zscores.loc[zscores.package==pkg],ignore_index=True)
-            r_copy= r_copy.append(ranking.loc[ranking.package==pkg],ignore_index=True)
+            #r_copy= r_copy.append(ranking.loc[ranking.package==pkg],ignore_index=True)
 
         zscores = deepcopy(zsc_copy)
-        ranking = deepcopy(r_copy)
+        #ranking = deepcopy(r_copy)
 
 
 
@@ -254,36 +255,68 @@ def ranked_heatmap_w_bar_overhead(zscores, ranking, metric='pearson_zscore_by_Da
     cbaxes = fig.add_axes([*cbar_loc, 0.15, 0.03]) 
     fig.colorbar(im, cax = cbaxes,orientation='horizontal', label='Z-score')
 
-    ranking = ranking.merge(package_data, on='package')
+    #ranking = ranking.merge(package_data, on='package')
 
-    ranking['category'] = [hue_order[i] for i in ranking['category']]
+    #ranking['category'] = [hue_order[i] for i in ranking['category']]
 
     ax2=ax[1][1]
     # sns.barplot(y='title', x=metric, hue='category', dodge=False, data=ranking.iloc[::-1],
     #             ax=ax2, palette=palette, hue_order=hue_order, )
 
-    color_order = [palette[hue_order.index(x)] for x in ranking ['category']]
+    #color_order = [palette[hue_order.index(x)] for x in ranking ['category']]
 
-    ax2.barh(np.arange(len(ranking)), ranking[metric].values,  xerr=ranking[metric.replace('mean','std')].values,color=color_order)
-    ax2.set_ylim([-0.5,len(ranking)-0.5])
+    #ranking = ranking.merge(package_data, on='package')
+    zscores = zscores.merge(package_data, on='package')
 
+    #ranking['category'] = [hue_order[i] for i in ranking['category']]
+    zscores['category'] = [hue_order[i] for i in zscores['category']]
+
+    sns.barplot(y='title', x=metric, hue='category', dodge=False, data=zscores,
+                ax=ax2, palette=palette, hue_order=hue_order, linewidth=0)
     ax2.yaxis.set_ticks_position('right')
     ax2.set_ylabel('')
     ax2.axvline(0,color='k',linewidth=0.5,linestyle=':')
     ax2.set_xlabel('Avg. Z-score')
-    ax2.set_xlim([vmin-0.1,vmax+0.1])
+    ax2.set_xlim([vmin,vmax])
     ax2.legend([],[], frameon=False)
 
-def corrfunc(x,y, ax=None, **kws):
 
-    r, pval = spearmanr(x, y, nan_policy='omit')
 
-    ax = ax or plt.gca()    
-    # m, b = np.poly1d(np.polyfit(x, y, 1))
-    # xmin, xmax = ax.get_xlim()
-    # plt.plot([xmin,xmax],[xmin*m+b,xmax*m+b],c='k',linestyle=':')
-    # ax.set_xlim([xmin,xmax])
-    ax.set_title(f'Spearman R = {r:.2f}',loc='right')
+    # ax2.barh(np.arange(len(ranking)), ranking[metric].values,  xerr=ranking[metric.replace('mean','std')].values,color=color_order)
+    # ax2.set_ylim([-0.5,len(ranking)-0.5])
+
+    # ax2.yaxis.set_ticks_position('right')
+    # ax2.set_ylabel('')
+    # ax2.axvline(0,color='k',linewidth=0.5,linestyle=':')
+    # ax2.set_xlabel('Avg. Z-score')
+    # ax2.set_xlim([vmin-0.1,vmax+0.1])
+    # ax2.legend([],[], frameon=False)
+
+def corrfunc(x,y, draw_line=False, method='spearman', make_title=False, ax=None, **kws):
+
+    if method=='spearman':
+        r, pval = spearmanr(x, y, nan_policy='omit')
+    elif method=='pearson':
+        r, pval = pearsonr(x, y)
+
+    ax = ax or plt.gca() 
+
+    if draw_line:
+        m, b = np.poly1d(np.polyfit(x, y, 1))
+        xmin, xmax = ax.get_xlim()
+        plt.plot([xmin,xmax],[xmin*m+b,xmax*m+b],c='k',linestyle=':')
+        ax.set_xlim([xmin,xmax])
+
+    if make_title:
+        if method=='spearman':
+            ax.set_title(f'Spearman R = {r:.2f}',loc='right')
+        elif method=='pearson':
+            ax.set_title(f'Pearson R = {r:.2f}',loc='right')
+    else:
+        if method=='spearman':
+            ax.annotate(f'Spearman R = {r:.2f}', xycoords='axes fraction',xy=(0.1,0.9))
+        elif method=='pearson':
+            ax.annotate(f'Pearson R = {r:.2f}', xycoords='axes fraction',xy=(0.1,0.9))
 
 def jitterbox(**kwargs):
     'supply x, y, hue, data'
