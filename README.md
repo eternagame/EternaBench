@@ -78,18 +78,18 @@ Takes about 12 minutes runtime to regenerate both. Example intermediate CDHIT ou
 
 `cluster_scripts`: scripts to run entire EternaBench benchmarking using SLURM cluster system.
 
-`data`: EternaBench datasets.
+`data`:
 
 -	`DEMO_ChemMapping.json.zip`: Input data for "Cloud lab Round 1", example chemical mappingdataset discussed in main text.
 -	`DEMO_Riboswitch.json.zip`: Input data for "Ribologic FMN" dataset, example riboswitch dataset discussed in main text. 
-- 	`EternaBench_*.json.zip`: Full and filtered EternaBench datasets without calculations.
--	`ChemMappingPreprocessing`: raw datasets used to create chem mapping benchmark.
--	`RiboswitchPreprocessing`: raw datasets used to create riboswitch benchmark.
--	`RiboswitchCalculations`: Example datasets with K_fold calculations.
--	`ChemMappingCalculations`: Example datasets with p(unpaired) calculations.
--	`ExternalData`: inputs and calculations for external collected datasets.
+-  `EternaBench_*.json.zip`: Full and filtered EternaBench datasets without calculations.
+-	`ChemMappingPreprocessing`: Initial datasets used to create chem mapping benchmark.
+-	`RiboswitchPreprocessing`: Initial datasets used to create riboswitch benchmark.
+-	`RiboswitchCalculations`: Example datasets with K_fold calculations (see notebooks in `analysis` for example calls to plot these).
+-	`ChemMappingCalculations`: Example datasets with p(unpaired) calculations (see notebooks in `analysis` for example calls to plot these).
+-	`ExternalData`: inputs and calculations for external collected datasets (see notebooks in `analysis` for example calls to plot these).
 
-`DEMO`: single script to regenerate observable calculations for one representative dataset from Chem Mapping and Riboswitch, and calculate significance.
+`DEMO`: One non-parallelized script to regenerate observable calculations for one representative dataset from Chem Mapping and Riboswitch, and calculate significance.
 
 `docs`: Documentation.
 
@@ -97,9 +97,7 @@ Takes about 12 minutes runtime to regenerate both. Example intermediate CDHIT ou
 
 `scoring_data`: CSVs containing all data and metrics used for evaluation in the paper. These data are the raw input to the figures plotted in the notebooks in `analysis`.
 
-`scripts`: scripts to calculate observables and bootstrap correlation significance over datasets. Full documentation is in `docs/RunBenchmarkREADME.md`.
-
-
+`scripts`: Scripts to calculate observables and bootstrap correlation significance over datasets.
 
 
 # Data Origin
