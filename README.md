@@ -32,9 +32,9 @@ Notebooks in `analysis` regenerate all the figures in the manuscript. Each figur
 4.
 
 ```
-cd /path/to/eternabench
-chmod +x runDemo.sh
-./runEternaBench.sh
+cd ${ETERNABENCH_PATH}/DEMO
+chmod +x run_demo.sh
+./run_demo.sh
 ```
 
 ### I want to regenerate thermodynamic calculations for all the datasets on a cluster
@@ -59,10 +59,8 @@ CDHIT_PATH='/path/to/cdhit'
 
 3. Run the below python scripts.
 ```
-cd /path/to/EternaBench/data/chemmapping_preprocessing
-python ../../scripts/GenerateChemMappingDatasets.py
-cd /path/to/EternaBench/data/riboswitch_preprocessing
-python ../../scripts/GenerateRiboswitchDatasets.py
+python ${ETERNABENCH_PATH}/scripts/GenerateChemMappingDatasets.py
+python ${ETERNABENCH_PATH}/scripts/GenerateRiboswitchDatasets.py
 ```
 
 # Organization 
