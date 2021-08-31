@@ -17,7 +17,7 @@ export ETERNABENCH_PATH=/path/to/EternaBench
 
 If you have an algorithm for which you wish to demonstrate its superior performance on these datasets, we ask you might consider checking in a PR to Arnie to wrap it. This will not only make your benchmarking easier, it will also make your algorithm immediately available for other RNA thermodynamics aficionados to use with these data and the Arnie ecosystem!
 
-Instructions for linking base-pair probability calculations to Arnie are [here](). Basically, the algorithm only needs to provide a symmetric matrix of probabilities p(i:j) as a numpy array.
+Instructions for linking base-pair probability calculations to Arnie are [here](https://github.com/eternagame/EternaBench/blob/master/docs/linkToArnie.md). Briefly, the algorithm just needs to provide a symmetric matrix of probabilities p(i:j) as a numpy array.
 
 ### I want to play with the data behind the figures in the paper, or use pre-calculated correlation coefficient or z-score data
 
