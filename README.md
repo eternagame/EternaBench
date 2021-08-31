@@ -11,9 +11,9 @@ export PYTHONPATH=/path/to/EternaBench
 export ETERNABENCH_PATH=/path/to/EternaBench
 ```
 
-## Use cases (from least to most intensive)
+## Use cases (roughly from least to most intensive)
 
-### I want to play with the data behind the figures in the paper, or use pre-calculated correlation or z-score data
+### I want to play with the data in the paper figures, or use pre-calculated correlation or z-score data
 
 Notebooks in `analysis` regenerate all the figures in the manuscript. Each figure cell indicates a path to a csv that contains the raw correlation and z-score data. Datasets for representative experiments and packages are also included.
 
