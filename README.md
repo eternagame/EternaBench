@@ -40,7 +40,7 @@ Instructions for linking base-pair probability calculations to Arnie are [here](
 5. Successful completion will end in a call to calculate bootstrapped Pearson correlation coefficients and z-scores.
 
 ```
-python ../calculateZscoreDEMO.py 
+python calculateZscoreDEMO.py 
 Chem Mapping Rnd 1 scores
         package  pearson_mean  pearson_std  pearson_zscore_by_Dataset_mean
 1    eternafold      0.738693     0.001563                        0.855730
