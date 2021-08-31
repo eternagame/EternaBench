@@ -41,22 +41,23 @@ chmod +x runDemo.sh
 
 The slurm scripts used to generate the data for this paper are contained in `/cluster_scripts`.
 
-Once paths are set, the jobs can be started via
 ```
-./runChemMapping.sh
-./runRiboswitch.sh
-./runExternal.sh
+./SubmitParallelChemMapping.sh
+./SubmitParallelRiboswitch.sh
+./SubmitParallelExternalData.sh
 ```
 
 ### I want to regenerate the filtered EternaBench datasets from the raw data
 
-1. Git clone [CD-HIT](https://github.com/weizhongli/cdhit) and export its path:
+1. Git clone [RDatKit](https://github.com/ribokit/RDATKit.git) and follow instructions there to your python path.
+
+2. Git clone [CD-HIT](https://github.com/weizhongli/cdhit) and export its path:
 
 ```
 CDHIT_PATH='/path/to/cdhit'
 ```
 
-2. Run the below python scripts.
+3. Run the below python scripts.
 ```
 cd /path/to/EternaBench/data/chemmapping_preprocessing
 python ../../scripts/GenerateChemMappingDatasets.py
