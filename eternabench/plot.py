@@ -26,6 +26,9 @@ def get_external_Dataset_data():
 def get_palette():
     return palette, ['Other','ViennaRNA','NUPACK','RNAstructure','CONTRAfold','RNAsoft', 'EternaFold']
 
+def label_subplot(letter,fontsize=16):
+    plt.annotate(letter, xy=(-.25, 1.), xycoords='axes fraction', horizontalalignment='left', verticalalignment='top', fontsize=fontsize)
+
 def reactivity_heatmap(df, ind_range=None, **kwargs):
     '''Plot heatplot image of reactivities.
     Input: full_df style dataframe.'''
@@ -109,10 +112,10 @@ def ranked_heatmap(zscores, metric='pearson_zscore_by_Dataset_mean', package_ord
         zscores = deepcopy(zsc_copy)
 
     if figsize is None or width_ratios is None:
-        n=len(zscores.Dataset.unique())
+        n=len(zscores[dataset_field].unique())
         k = len(zscores.package.unique())
-        figsize=(.2*n+2,.2*k-1)
-        width_ratios = [.2*n, 2]
+        figsize=(.3*n+2,.3*k-1)
+        width_ratios = [.3*n, 2]
 
     tmp, package_list, dataset_list = create_array(zscores, 'package', dataset_field, metric)
 
