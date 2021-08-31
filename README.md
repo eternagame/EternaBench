@@ -1,6 +1,6 @@
 # EternaBench
 
-This repository contains the EternaBench datasets as well as scripts to reproduce the analysis presented in Wayment-Steele et al. (2021).
+This repository contains the EternaBench datasets and accompanying code, which evaluate RNA structure prediction using diverse thermodynamic prediction tasks and high-throughput datasets (Wayment-Steele et al, 2021).
 
 
 ## Setup
