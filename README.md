@@ -19,7 +19,11 @@ Notebooks in `analysis` regenerate all the figures in the manuscript. Each figur
 
 ### I want to benchmark my novel algorithm against the algorithms contained here
 
-This code uses [Arnie](https://github.com/DasLab/arnie/) to wrap the algorithms tested in this work. If you have an algorithm for which you wish to demonstrate its superior performance on these datasets, we recommend checking in a PR to Arnie to wrap your algorithm. This will not only make your benchmarking easier, it will also make your algorithm immediately available for other Arnie-wielding RNA thermodynamics fans to use!
+This code uses [Arnie](https://github.com/DasLab/arnie/) to wrap the algorithms tested in this work.
+
+If you have an algorithm that you want to demo on these datasets, we recommend checking in a PR to Arnie to wrap your algorithm.
+
+This will make benchmarking easier and will also make your algorithm immediately available for other Arnie-wielding RNA thermodynamics fans to use!
 
 Instructions for linking base-pair probability calculations to Arnie are [here](https://github.com/eternagame/EternaBench/blob/master/docs/linkToArnie.md). Briefly, the algorithm just needs to provide a symmetric matrix of probabilities p(i:j) as a numpy array.
 
