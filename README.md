@@ -115,7 +115,7 @@ Takes about 12 minutes runtime to regenerate both. Example intermediate CDHIT ou
 
 # Data Origin
 
-- Chemical Mapping RDAT files may be downloaded from www.rmdb.stanford.edu.
+- Chemical Mapping RDAT files may be downloaded from rmdb.stanford.edu.
 
 - Eterna riboswitch datasets are detailed in the supporting information of 
 
