@@ -1,0 +1,37 @@
+﻿Class,Dataset,EternaBench keyword,URL to download data under permissive license or no license,Publication license,Journal
+viral_gRNA,"HIV-1 (Watts, 2009)","Watts,2009",https://weekslab.com/publications/,CC BY,Nature
+viral_gRNA,"HIV-1 (Siegfried, 2014)","Siegfried,2014",https://weekslab.com/publications/,CC BY,Nature Methods
+viral_gRNA,"SIV (Lavender, 2015)","Lavender,2015",https://weekslab.com/publications/,CC BY 4.0,PLOS comp bio
+viral_gRNA,"Alphavirus (Kutchko, 2018)","Kutchko,2018",https://academic.oup.com/nar/article/46/7/3657/4817396,CC BY NC 4.0,NAR
+viral_gRNA,"Zika, Dengue (Huber, 2019)","Huber, 2019 in vitro",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE106483,CC BY 4.0,Nature Comms
+viral_gRNA,"Influenza (Dadonaite, 2019)","Dadonaite,2019",https://doi.org/10.1038/s41564-019-0513-7,CC BY 4.0,Nature Microbio
+viral_gRNA,"Influenza (Simon, 2019)","Simon,2019 Invitro",http://www.incarnatolab.com/datasets/IAV_Simon_2019.php,CC BY 4.0,NAR
+viral_gRNA,"Zika, Dengue in virion (Huber, 2019)","Huber, 2019 in virion",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE106483,CC BY 4.0,Nat comms
+viral_gRNA,"CMV (Watters, 2018)","Watters,2018",https://rmdb.stanford.edu/detail/CMVBN3_1M7_0001,CC BY NC 4.0,NAR
+viral_gRNA,"Influenza in vivo (Simon, 2019)","Simon,2019 Invivo",http://www.incarnatolab.com/datasets/IAV_Simon_2019.php,CC BY 4.0,NAR
+SARS-CoV-2_gRNA,"DMS (Manf., 2020)","Manfredonia, 2020 SARS-CoV-2 DMS in vitro",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE151327,CC BY NC 4.0,NAR
+SARS-CoV-2_gRNA,"SHAPE (Manf., 2020)","Manfredonia, 2020 SARS-CoV-2 SHAPE in vitro",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE151327,CC BY NC 4.0,NAR
+SARS-CoV-2_gRNA,"icSHAPE (Sun, 2021)","Sun, 2021 SARS-CoV-2 in vitro",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE153984,Copyright Elsevier,Cell
+SARS-CoV-2_gRNA,"SHAPE, in vivo (Manf., 2020)","Manfredonia, 2020 SARS-CoV-2 SHAPE in vivo",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE151327,CC BY NC 4.0,NAR
+SARS-CoV-2_gRNA,"DMS, in vivo (Huston, 2021)","Huston, 2021 SARS-CoV-2 in vivo",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE154171,Copyright Elsevier,Molecular Cell
+SARS-CoV-2_gRNA,"icSHAPE, in vivo (Sun, 2021)","Sun, 2021 SARS-CoV-2 in vivo",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE153984,Copyright Elsevier,Cell
+mRNA,"Nluc, 1M7 (Leppek, 2021)","Leppek, 2021, Nluc mRNA 1M7 in vitro",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE173083,CC BY NC 4.0,biorxiv
+mRNA,"Nluc, DMS (Leppek, 2021)","Leppek, 2021, Nluc mRNA DMS in vitro",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE173083,CC BY NC 4.0,biorxiv
+mRNA,"Luciferase (n=38) (Mauger, 2019)","Mauger,2019",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE139176,CC BY 4.0,PNAS (Open Access)
+mRNA,"HEK293 mRNAs (n=3745), chromatin ex vivo","Sun, 2019 HEK293 chromatin in vitro",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117840,CC BY 4.0,NSMB
+mRNA,"HEK293 mRNAs (n=3094), cytoplasm ex vivo","Sun, 2019 HEK293 cytoplasm in vitro",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117840,CC BY 4.0,NSMB
+mRNA,"HEK293 mRNAs (n=3218), nucleoplasm ex vivo","Sun, 2019 HEK293 nucleoplasm in vitro",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117840,CC BY 4.0,NSMB
+mRNA,"HEK293 mRNAs (n=1372), chromatin in vivo","Sun, 2019 HEK293 chromatin in vivo",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117840,CC BY 4.0,NSMB
+mRNA,"HEK293 mRNAs (n=1561), cytoplasm ex vivo","Sun, 2019 HEK293 cytoplasm in vivo",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117840,CC BY 4.0,NSMB
+mRNA,"HEK293 mRNAs (n=1770), nucleoplasm in vivo","Sun, 2019 HEK293 nucleoplasm in vivo",https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117840,CC BY 4.0,NSMB
+rRNA,"ex vivo, deproteinized (Deigan, 2009)","Deigan, 2009 ex vivo rRNA",https://weekslab.com/publications/,Copyright PNAS,PNAS
+rRNA,"in vivo (McGinnis, 2014)","McGinnis, 2015, rRNA in vivo",https://weekslab.com/publications/,Copyright ACS,Biochemistry
+rRNA,"ex vivo (Simon, 2019)","Simon,2019 Ecoli exvivo",http://www.incarnatolab.com/datasets/IAV_Simon_2019.php,CC BY 4.0,NAR
+synthetic RNA,"RYOS-I (n=3029), 1M7 (Leppek, 2021)",1_reactivity,https://rmdb.stanford.edu/detail/SHAPE_RYOS_0620,CC BY NC 4.0,biorxiv
+synthetic RNA,"RYOS-I (n=3029), In-line deg. pH 10 Mg2+ (Leppek, 2021)",1_deg_Mg_50C,https://rmdb.stanford.edu/detail/RYOS1_MG50_0000,CC BY NC 4.0,biorxiv
+synthetic RNA,"RYOS-I (n=3029), In-line deg. 50˚C Mg2+ (Leppek, 2021)",1_deg_Mg_pH10,https://rmdb.stanford.edu/detail/RYOS1_MGPH_0000,CC BY NC 4.0,biorxiv
+synthetic RNA,"RYOS-I (n=3029), In-line deg. pH 10 (Leppek, 2021)",1_deg_50C,https://rmdb.stanford.edu/detail/RYOS1_50C_0000,CC BY NC 4.0,biorxiv
+synthetic RNA,"RYOS-I (n=3029), In-line deg. 50˚C (Leppek, 2021)",1_deg_pH10,https://rmdb.stanford.edu/detail/RYOS1_PH10_0000,CC BY NC 4.0,biorxiv
+synthetic RNA,"RYOS-II (n=3013), 1M7 (RMDB, 2021)",2_reactivity,https://rmdb.stanford.edu/RYOS2_1M7_0000,CC BY NC 4.0,biorxiv
+synthetic RNA,"RYOS-II (n=3013), In-line deg. pH 10 (RMDB, 2021)",2_deg_Mg_pH10,https://rmdb.stanford.edu/RYOS2_MGPH_0000,CC BY NC 4.0,biorxiv
+synthetic RNA,"RYOS-II (n=3013), In-line deg. 50˚C (RMDB, 2021)",2_deg_Mg_50C,https://rmdb.stanford.edu/RYOS2_MG50_0000,CC BY NC 4.0,biorxiv
