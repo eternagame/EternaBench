@@ -127,7 +127,7 @@ Andreasson, J. O., ... & Das, R., Greenleaf, W. J. (2019). Crowdsourced RNA desi
 Wu, M. J., Andreasson, J. O., Kladwang, W., Greenleaf, W., & Das, R. (2019). Automated design of diverse stand-alone riboswitches. ACS synthetic biology, 8(8), 1838-1846.
 
 
-- Links to download the *Chemical mapping datasets from other papers*, which permit their re-use in the EternaBench dataset form, is included at (docs/Eternabench_external_dataset_license_info.csv)[docs/Eternabench_external_dataset_license_info.csv].
+- Links to download the *Chemical mapping datasets from other papers*, which permit their re-use in the EternaBench dataset form, is included at [docs/Eternabench_external_dataset_license_info.csv](docs/Eternabench_external_dataset_license_info.csv).
 
 # Contact
 
