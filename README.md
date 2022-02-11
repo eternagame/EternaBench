@@ -1,6 +1,6 @@
 # EternaBench
 
-This repository contains the EternaBench datasets and accompanying code, which evaluate RNA structure prediction using diverse thermodynamic prediction tasks and high-throughput datasets (Wayment-Steele et al, 2021).
+This repository contains the EternaBench datasets and accompanying code, which evaluate RNA structure prediction using diverse thermodynamic prediction tasks and high-throughput datasets (Wayment-Steele et al, 2022).
 
 
 ## Setup
@@ -101,6 +101,8 @@ Takes about 12 minutes runtime to regenerate both. Example intermediate CDHIT ou
 -	`RiboswitchCalculations`: Example datasets with K_fold calculations (see notebooks in `analysis` for example calls to plot these).
 -	`ChemMappingCalculations`: Example datasets with p(unpaired) calculations (see notebooks in `analysis` for example calls to plot these).
 -	`ExternalData`: inputs and calculations for external collected datasets (see notebooks in `analysis` for example calls to plot these).
+
+`datasets_in_fasta_form`: all of the datasets above, in fasta format.
 
 `DEMO`: One non-parallelized script to regenerate observable calculations for one representative dataset from Chem Mapping and Riboswitch, and calculate significance.
 
