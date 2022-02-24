@@ -2,6 +2,11 @@
 
 This repository contains the EternaBench datasets and accompanying code, which evaluate RNA structure prediction using diverse thermodynamic prediction tasks and high-throughput datasets (Wayment-Steele et al, 2022).
 
+If you use this database in your work, please cite it as
+
+```
+Wayment-Steele, H., & Das, R. (2022). EternaBench: Multistate RNA database (Version 2.1.0) [Computer software]. https://doi.org/10.5281/zenodo.6259299
+```
 
 ## Setup
 
