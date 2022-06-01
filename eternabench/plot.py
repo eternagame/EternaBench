@@ -13,7 +13,7 @@ warnings.filterwarnings("ignore")
 
 
 blue, orange, green, red, purple, brown, _, _, _, _=sns.color_palette()
-palette = [brown, blue, red, green,orange, purple, [0,0,0]]
+palette = [brown, blue, red, green,orange, purple, [0.8,0.8,0.8]]
 
 def get_packages():
     tmp = pd.read_csv(os.environ['ETERNABENCH_PATH']+'/eternabench/package_metadata.csv')
@@ -47,6 +47,23 @@ def reactivity_heatmap(df, ind_range=None, **kwargs):
     plt.ylabel('Construct')
     plt.xlabel('Sequence position')
 
+def reactivity_heatmap_SOURCE_DATA(df, ind_range=None, **kwargs):
+    '''Plot heatplot image of reactivities.
+    Input: full_df style dataframe.'''
+
+    if ind_range is None:
+        start,finish = 0,-1
+    else:
+        start, finish=ind_range
+
+    max_len = np.max([len(x) for x in df['reactivity'][start:finish]])
+    arr= []
+
+    for x in df['reactivity'][start:finish]:
+        arr.append(np.concatenate([x,np.zeros(max_len-len(x))]))
+
+    return arr
+
 def punpaired_heatmap(df, ind_range=None, package='vienna_2', **kwargs):
     '''Plot heatplot image of predicted p(unp) values.
     Input: full_df style dataframe.'''
@@ -64,6 +81,23 @@ def punpaired_heatmap(df, ind_range=None, package='vienna_2', **kwargs):
     plt.imshow(np.array(arr), cmap='gist_heat_r',vmin=0,vmax=1, **kwargs)
     plt.xlabel('Construct')
     plt.ylabel('Sequence position')
+
+def punpaired_heatmap_SOURCE_DATA(df, ind_range=None, package='vienna_2', **kwargs):
+    '''Plot heatplot image of predicted p(unp) values.
+    Input: full_df style dataframe.'''
+
+    if ind_range is None:
+        start,finish = 0,-1
+    else:
+        start, finish=ind_range
+        
+    max_len = np.max([len(x) for x in df['reactivity'][start:finish]])
+    arr= []
+
+    for x in df['p_%s'% package][start:finish]:
+        arr.append(np.concatenate([x,np.zeros(max_len-len(x))]))
+
+    return arr
 
 def create_array(df_o, col1, col2, value, col1_subset=None, col2_subset=None):
     '''Create array of `value` from dataframe. 
@@ -94,7 +128,7 @@ def single_barplot(df, cat, val, err, titles, **kwargs):
 
 def ranked_heatmap(zscores, metric='pearson_zscore_by_Dataset_mean', package_order=None,
                    dataset_field='Dataset', 
-                   dataset_order=None,
+                   dataset_order=None, show_indiv_datapoints=True, size=5,
                    figsize=None, width_ratios=None, cbar_loc=[-0.1,0.05], fig=None, axes=None,
                    vmin=None,vmax=None, ext=False,dataset_labels=None):
     '''Plot heatmap of packages ranked over datasets, with best at top.'''
@@ -116,6 +150,7 @@ def ranked_heatmap(zscores, metric='pearson_zscore_by_Dataset_mean', package_ord
         k = len(zscores.package.unique())
         figsize=(.3*n+2,.3*k-1)
         width_ratios = [.3*n, 2]
+    print(figsize, width_ratios)
 
     tmp, package_list, dataset_list = create_array(zscores, 'package', dataset_field, metric)
 
@@ -167,19 +202,30 @@ def ranked_heatmap(zscores, metric='pearson_zscore_by_Dataset_mean', package_ord
     #ranking['category'] = [hue_order[i] for i in ranking['category']]
     zscores['category'] = [hue_order[i] for i in zscores['category']]
 
-    sns.barplot(y='title', x=metric, hue='category', dodge=False, data=zscores,
+
+    if show_indiv_datapoints:
+        sns.stripplot(y='title', x=metric, dodge=False, data=zscores,
+                    ax=ax2, color='#555555', alpha=0.8,edgecolor='k',linewidth=0, size=size)
+
+        sns.barplot(y='title', x=metric, hue='category', dodge=False, data=zscores,
+                ax=ax2, palette=palette, hue_order=hue_order, linewidth=0, errcolor='k', errwidth=1,capsize=0.3)
+ 
+    else:
+        sns.barplot(y='title', x=metric, hue='category', dodge=False, data=zscores,
                 ax=ax2, palette=palette, hue_order=hue_order, linewidth=0)
+ 
     ax2.yaxis.set_ticks_position('right')
     ax2.set_ylabel('')
     ax2.axvline(0,color='k',linewidth=0.5,linestyle=':')
     ax2.set_xlabel('Avg. Z-score')
-    ax2.set_xlim([vmin,vmax])
+    ax2.set_xlim([vmin,vmax]) 
     ax2.legend([],[], frameon=False)
 
 
 def ranked_heatmap_w_bar_overhead(zscores, metric='pearson_zscore_by_Dataset_mean', package_order=None,
+                    show_indiv_datapoints=True, size=2,
                    dataset_field='Dataset', figsize=(7,5), width_ratios=[2,1], cbar_loc=[-0.1,0.05],
-                   vmin=None,vmax=None, ext=False,barplot_ymax=0.75, barplot_ylabel='Mean Corr.',RMSE=False, rainbow=False):
+                   vmin=None,vmax=None, ext=False,barplot_ymax=0.75, barplot_ylabel='Mean Corr.',RMSE=False):
     '''Plot heatmap of packages ranked over datasets, with best at top.'''
 
     if RMSE:
@@ -190,7 +236,7 @@ def ranked_heatmap_w_bar_overhead(zscores, metric='pearson_zscore_by_Dataset_mea
     if package_order is not None:
         zsc_copy=pd.DataFrame()
         r_copy = pd.DataFrame()
-        for pkg in package_order:
+        for pkg in list(reversed(package_order)):
             zsc_copy= zsc_copy.append(zscores.loc[zscores.package==pkg],ignore_index=True)
             #r_copy= r_copy.append(ranking.loc[ranking.package==pkg],ignore_index=True)
 
@@ -224,13 +270,14 @@ def ranked_heatmap_w_bar_overhead(zscores, metric='pearson_zscore_by_Dataset_mea
 
     ax0=ax[0][0]
 
-    if rainbow:
-        sns.barplot(x=dataset_field, y=metric.split('_')[0]+'_mean', data=zscores, palette='rainbow', ax=ax0)
-    else:
-        sns.barplot(x=dataset_field, y=metric.split('_')[0]+'_mean', data=zscores, color='grey', ax=ax0)
+    sns.barplot(x=dataset_field, y=metric.split('_')[0]+'_mean', data=zscores, color='white', ax=ax0,edgecolor='k',
+        linewidth=0.5,
+     errcolor='k', errwidth=1,capsize=0.3)
+    sns.stripplot(x=dataset_field, y=metric.split('_')[0]+'_mean', data=zscores, color='#555555',
+     alpha=0.8,edgecolor='k',linewidth=0, size=2, ax=ax0)
 
     ax0.set_xticks([])
-    ax0.set_ylim([0,barplot_ymax])
+    ax0.set_ylim([0,1])
     ax0.set_xlabel('')
     ax0.set_ylabel(barplot_ylabel)
 
@@ -242,7 +289,7 @@ def ranked_heatmap_w_bar_overhead(zscores, metric='pearson_zscore_by_Dataset_mea
 
     ax1=ax[1][0]
 
-    im = ax1.imshow(tmp, cmap='seismic_r', vmin = vmin, vmax=vmax, aspect='auto', origin='upper left')
+    im = ax1.imshow(tmp, cmap='seismic_r', vmin = vmin, vmax=vmax, aspect='auto', origin='upper')
 
     ax1.set_yticks(range(len(package_titles)))
     ax1.set_yticklabels(package_titles)
@@ -270,12 +317,22 @@ def ranked_heatmap_w_bar_overhead(zscores, metric='pearson_zscore_by_Dataset_mea
 
     #ranking = ranking.merge(package_data, on='package')
     zscores = zscores.merge(package_data, on='package')
+    print('here2', zscores['category'].unique())
 
     #ranking['category'] = [hue_order[i] for i in ranking['category']]
     zscores['category'] = [hue_order[i] for i in zscores['category']]
 
-    sns.barplot(y='title', x=metric, hue='category', dodge=False, data=zscores,
+    if show_indiv_datapoints:
+        sns.stripplot(y='title', x=metric, dodge=False, data=zscores,
+                    ax=ax2, color='#555555', alpha=0.8,edgecolor='k',linewidth=0, size=size)
+
+        sns.barplot(y='title', x=metric, hue='category', dodge=False, data=zscores,
+                ax=ax2, palette=palette, hue_order=hue_order, linewidth=0, errcolor='k', errwidth=1,capsize=0.3)
+ 
+    else:
+        sns.barplot(y='title', x=metric, hue='category', dodge=False, data=zscores,
                 ax=ax2, palette=palette, hue_order=hue_order, linewidth=0)
+ 
     ax2.yaxis.set_ticks_position('right')
     ax2.set_ylabel('')
     ax2.axvline(0,color='k',linewidth=0.5,linestyle=':')
