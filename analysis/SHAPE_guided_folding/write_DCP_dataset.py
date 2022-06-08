@@ -4,9 +4,7 @@ import pandas as pd
 from glob import glob
 import os, sys, pickle, requests
 
-sys.path.append('/Users/hwayment/das/github/EternaBench/eternabench')
 import chemmapping_utils as utils
-sys.path.append('/Users/hwayment/das/github/')
 from RDATKit import rdatkit
 from copy import deepcopy
 
@@ -50,7 +48,7 @@ def write_rdat_as_dataframe_loc(rdat_file):
             
     return df
     
-all_rdats = glob('/Users/hwayment/das/github/DeepChemicalProfiling/data/Final/RDAT/*.rdat')
+all_rdats = glob('raw_RDATS/DCP_RDATS_SHAPE_DMS/*.rdat')
 print(all_rdats)
 
 full_df = pd.DataFrame()
@@ -65,5 +63,5 @@ for _, row in tmp.iterrows():
         tmp2 = tmp2.append(row, ignore_index=True)
 
 print('length', len(tmp2))
-tmp2.to_json('structured_13_DMS.json')
+tmp2.to_json('ex_dataset.json')
 
