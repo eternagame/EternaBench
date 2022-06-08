@@ -47,3 +47,21 @@ LinearFold-E_100,LinearFold-E_100,6
 LinearFold-E_500,LinearFold-E_500,6
 LinearFold-E_1000,LinearFold-E_1000,6
 LinearFold-E_5000,LinearFold-E_5000,6
+MFE_orig_vienna,ViennaRNA 2,1
+MFE_directed_vienna,ViennaRNA 2 (Washietl),1
+MFE_directed_RNAstructure_pks,SHAPEknots,3
+MFE_directed_eternafold_0.1,EternaFold+SHAPE/DMS,6
+MFE_directed_eternafold_0.0,EternaFold,6
+MFE_directed_viennaRNA_Z,ViennaRNA 2 (Zarringhalam),1
+MFE_directed_RNAstructure,RNAstructure+SHAPE/DMS,3
+MFE_directed_viennaRNA_D,ViennaRNA 2 (Deigan),1
+MFE_orig_RNAstructure,RNAstructure,3
+ViennaRNA (RNAfold),ViennaRNA 2,1
+ViennaRNA (Washietl),ViennaRNA 2 (Washietl),1
+SHAPEknots,SHAPEknots,3
+EternaFold+SHAPE/DMS,EternaFold+SHAPE/DMS,6
+EternaFold,EternaFold,6
+ViennaRNA (Zarringhalam),ViennaRNA 2 (Zarringhalam),1
+RNAstructure+SHAPE/DMS,RNAstructure+SHAPE/DMS,3
+ViennaRNA (Deigan),ViennaRNA 2 (Deigan),1
+RNAstructure,RNAstructure,3
