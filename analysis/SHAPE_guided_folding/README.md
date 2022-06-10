@@ -4,11 +4,7 @@ Scripts and analyses related to SHAPE-guided folding.
 
 `SHAPE_guided_all_constructs_6Jun2022.txt`: Contains input sequences, predicted structures, and MCC scores for package options.
 
-### Analysis
-
-`analyze_zscores_plot.ipynb`: Plot, perform bootstrapping Z-score analysis
-
-### Scripts & inputs to run SHAPE-directed folding in Arnie
+### Run SHAPE-directed folding in Arnie
 
 `shape_dataset_input.txt`: Clean spreadsheet of input sequences, ground truth structures, reactivity, and associated metadata
 
@@ -18,6 +14,10 @@ Usage:
 ```
 python run_SHAPE_guided_folding.py
 ```
+
+### Analysis
+
+`analyze_zscores_plot.ipynb`: Plot, perform bootstrapping Z-score analysis
 
 ### Raw data
 
