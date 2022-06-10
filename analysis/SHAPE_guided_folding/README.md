@@ -18,6 +18,6 @@ Scripts/inputs to reproduce
 
 Raw data
 
-`raw_RDATs`: contains all RDATs used in analysis for Cheng 2017 (PNAS), Kappel 2020 (Nat. Methods), "DeepChemicalProfiling" datasets.
+`raw_RDATs`: contains all RDATs used in analysis for datasets from Cheng et al. (2017) PNAS, Kappel et al. (2020) Nat. Methods, "DeepChemicalProfiling" (first published here).
 
 `ShapeKnots_DATA`: contains SHAPEknots dataset downloaded from https://weekslab.com/publications/, with a few errors manually corrected.
