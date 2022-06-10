@@ -4,7 +4,7 @@ Scripts and analyses related to SHAPE-guided folding.
 
 `SHAPE_guided_all_constructs_6Jun2022.txt`: Contains input sequences, predicted structures, and MCC scores for package options.
 
-### Analysis*
+### Analysis
 
 `analyze_zscores_plot.ipynb`: Plot, perform bootstrapping Z-score analysis
 
